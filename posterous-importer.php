@@ -149,7 +149,7 @@ class Posterous_Import extends WP_Importer {
       $this->process_posts( $url );
       $page++;
       // Sleep after fetching sites because Posterous doesn't like if you do more than one request in a second.
-      usleep( 1100000 );
+      usleep( 3100000 );
     } while ( true === $this->have_posts );
   }
  
@@ -159,6 +159,7 @@ class Posterous_Import extends WP_Importer {
  * @return void 
    */
   function handle_bad_response( $data, $code ) {
+    //var_dump($data);
     printf( "<em>%s</em><br />\n", __( 'Got HTTP code' ) . ' ' . $code . ' ' . __( 'from' ) . ' ' . $url );
     exit();
   }
