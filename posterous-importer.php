@@ -95,7 +95,7 @@ class Posterous_Import extends WP_Importer {
     set_time_limit( 0 );
     $this->sites = $this->get_sites();
     // Sleep after fetching sites because Posterous doesn't like if you do more than one request in a second.
-    usleep( 1100000 );
+    usleep( 3100000 );
     $this->permalinks = $this->get_imported_posts( 'posterous', $this->bid );
     $this->comments = $this->get_imported_comments();
     $this->attachments = $this->get_imported_attachments( 'posterous', $this->bid );
