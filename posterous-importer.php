@@ -93,6 +93,7 @@ class Posterous_Import extends WP_Importer {
     do_action( 'import_start' );
     // Set time limit after import_start to avoid the 900 second limit
     set_time_limit( 0 );
+    usleep( 3100000 );
     $this->sites = $this->get_sites();
     // Sleep after fetching sites because Posterous doesn't like if you do more than one request in a second.
     usleep( 3100000 );
@@ -114,7 +115,7 @@ class Posterous_Import extends WP_Importer {
  
     $code = (int) $data['response']['code'];
     if ( 200 !== $code ) {
-      printf( "<em>%s</em><br />\n", __( 'Got HTTP code' ) . ' ' . $code . ' ' . __( 'from' ) . ' ' . $url );
+      printf( "<em>%s</em><br />\n", __( 'Got HTTP code' ) . ' ' . $code . ' ' . __( 'from' ) . ' ' . $url . "<br />\n" . $data['body']);
       exit();
     }
  
